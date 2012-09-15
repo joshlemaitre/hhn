@@ -1,1 +1,20 @@
-fdhsaklhfjklsaf
+# THE MONTY HALL PROBLEM
+#
+#
+monty <- function() {    
+    doors <- c(1,2,3) # 3 doors
+    prize <- sample(doors,1) # prize randomly placed behind a door
+    duds <- doors[which(doors != prize)] 
+    pick <- sample(doors,1) # player randomly chooses a door
+    doors <- doors[doors != setdiff(duds,pick)[1]] # host reveals a goat
+    pick <- doors[doors != pick] # player switches doors
+    if (pick == prize)
+        result <- 'Win'
+    else 
+        result <- 'Lose'
+    return(result)
+}
+
+table(sapply(1:10, FUN = function(x) monty()))
+
+
